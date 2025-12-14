@@ -176,7 +176,7 @@ jobs:
           steps.check-label.outputs.hasTopic == 'true' &&
           steps.check-release.outputs.isLatestRelease == 'true' &&
           fromJson(steps.download.outputs.downloaded_files)[0]
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           path: "flathub/${{ env.FLATHUB_PKG }}"
           token: ${{ secrets.GH_BOT_TOKEN }}
