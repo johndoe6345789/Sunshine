@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Setup Release
         id: setup_release
@@ -95,13 +95,13 @@ jobs:
           remove-docker-images: 'true'
 
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           submodules: recursive
 
       - name: Setup node
         id: node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ env.NODE_VERSION }}
 
@@ -151,7 +151,7 @@ jobs:
           cat generated-sources.json
 
       - name: Cache Flatpak build
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: ./build/.flatpak-builder
           key: flatpak-${{ matrix.arch }}-${{ github.sha }}
@@ -292,7 +292,7 @@ jobs:
           tar -czf ./artifacts/flathub.tar.gz -C ./flathub .
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: sunshine-linux-flatpak-${{ matrix.arch }}
           path: artifacts/
@@ -333,7 +333,7 @@ jobs:
           remove-docker-images: 'true'
 
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           submodules: recursive
 
@@ -455,7 +455,7 @@ jobs:
           ./appimagelint-x86_64.AppImage ./artifacts/sunshine.AppImage
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: sunshine-linux-${{ matrix.type }}-${{ matrix.dist }}
           path: artifacts/
@@ -545,7 +545,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Fix python
         if: matrix.os_name == 'macos' && matrix.os_version == '13'
@@ -621,7 +621,7 @@ jobs:
 
       - name: Upload Artifacts
         if: ${{ matrix.release }}
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: sunshine-homebrew
           path: homebrew/
@@ -717,17 +717,17 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Checkout ports
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           repository: macports/macports-ports
           fetch-depth: 64
           path: ports
 
       - name: Checkout mpbb
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           repository: macports/mpbb
           path: mpbb
@@ -833,7 +833,7 @@ jobs:
 
       - name: Upload Artifacts
         if: ${{ matrix.release }}
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: sunshine-macports
           path: artifacts/
@@ -963,7 +963,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           submodules: recursive
 
@@ -1222,7 +1222,7 @@ jobs:
             a "../artifacts/sunshine-win32-debuginfo.7z" "*.dbg"
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: sunshine-windows
           path: artifacts/

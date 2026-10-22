@@ -28,7 +28,7 @@ jobs:
       continue: ${{ steps.continue.outputs.result }}
     steps:
       - name: Get repo languages
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         id: lang
         with:
           script: |
@@ -87,7 +87,7 @@ jobs:
             return matrix
 
       - name: Continue
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         id: continue
         with:
           script: |
@@ -135,7 +135,7 @@ jobs:
           remove-docker-images: 'true'
 
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           submodules: recursive
 
@@ -207,7 +207,7 @@ jobs:
           sarif_file: sarif-results/${{ matrix.language }}.sarif
 
       - name: Upload loc as a Build Artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: sarif-results-${{ matrix.language }}-${{ runner.os }}
           path: sarif-results
