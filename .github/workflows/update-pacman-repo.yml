@@ -25,7 +25,7 @@ jobs:
         env:
           TOPIC: pacman-pkg
         id: check-label
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const topic = process.env.TOPIC;
@@ -46,7 +46,7 @@ jobs:
         id: check-release
         if: >-
           steps.check-label.outputs.hasTopic == 'true'
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const latestRelease = await github.rest.repos.getLatestRelease({
@@ -60,7 +60,7 @@ jobs:
         if: >-
           steps.check-label.outputs.hasTopic == 'true' &&
           steps.check-release.outputs.isLatestRelease == 'true'
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           repository: ${{ github.repository_owner }}/pacman-repo
 
